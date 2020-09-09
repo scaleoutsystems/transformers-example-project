@@ -1,7 +1,13 @@
-# def load_model():
+ def load_model():
 #     # Should load and return the model.
 #     # Optional, but if present will be loaded during
 #     # startup in the "default-python" environment.
+    import tensorflow as tf
+    from transformers import BertTokenizer, BertModel, TFBertModel, TFBertForMaskedLM 
+    from tokenizers import BertWordPieceTokenizer
+    import warnings; warnings.filterwarnings('ignore')
+    model = TFBertForMaskedLM.from_pretrained(pretrained_model_name)
+    return model
 
 def predict(inp, model=[]):
     # Called by default-python environment.
