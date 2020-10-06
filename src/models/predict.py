@@ -1,15 +1,14 @@
 import json
 import torch
-from transformers import BertTokenizer
+# from transformers import BertTokenizer
 from tokenizers import BertWordPieceTokenizer
 
 def model_load():
-#     # Should load and return the model.
-#     # Optional, but if present will be loaded during
-#     # startup in the "default-python" environment.
-    from transformers import BertTokenizer, BertModel, TFBertModel, TFBertForMaskedLM, BertForMaskedLM
+    # Should load and return the model.
+    # Optional, but if present will be loaded during
+    # startup in the "default-python" environment.
+    from transformers import BertForMaskedLM
     import warnings; warnings.filterwarnings('ignore')
-#     model = TFBertForMaskedLM.from_pretrained('af-ai-center/bert-base-swedish-uncased')
     model = BertForMaskedLM.from_pretrained('af-ai-center/bert-base-swedish-uncased')
     return model
 
@@ -22,8 +21,6 @@ def model_predict(inp, model=[]):
     
     # predict all tokens
     
-
-    # text = 'Av alla städer i världen, är du den stad som fått allt.'
     text = inp.pred
 
     tokenizer = BertTokenizer.from_pretrained('src/models/vocab_swebert.txt', do_lower_case=False)
@@ -51,7 +48,7 @@ def model_predict(inp, model=[]):
     
     predicted_index_top5 = torch.argsort(predictions[0, masked_index], descending=True)[:5]
     predicted_token = tokenizer.convert_ids_to_tokens(predicted_index_top5)
-    predicted_index_top5
+#   predicted_index_top5
     print(predicted_token)
     return {"result": predicted_token}
 
