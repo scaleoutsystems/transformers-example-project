@@ -1,6 +1,6 @@
 import json
 import torch
-# from transformers import BertTokenizer
+from transformers import BertTokenizer
 from tokenizers import BertWordPieceTokenizer
 
 def model_load():
