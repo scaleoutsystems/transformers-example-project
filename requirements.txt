@@ -4,6 +4,6 @@ pydantic
 torch
 tensorflow
 transformers
-tokenizers
+tokenizers==0.9.4
 ipywidgets
 
