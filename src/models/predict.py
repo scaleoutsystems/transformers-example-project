@@ -20,13 +20,11 @@ def model_predict(inp, model=[]):
     # Should return JSON.
     
     # predict all tokens
-    
     text = inp.pred
-
-    tokenizer = BertTokenizer.from_pretrained('src/models/vocab_swebert.txt', do_lower_case=False)
+    tokenizer = BertTokenizer.from_pretrained('models/src/models/vocab_swebert.txt', do_lower_case=False)
 #     input_ids = tokenizer(text.lower())["input_ids"]
 #     tokenizer = BertTokenizer.from_pretrained('src/models/vocab_swebert.txt', lowercase=True, strip_accents=False)
-    bert_word_piece_tokenizer = BertWordPieceTokenizer("src/models/vocab_swebert.txt", lowercase=True, strip_accents=False)
+    bert_word_piece_tokenizer = BertWordPieceTokenizer("models/src/models/vocab_swebert.txt", lowercase=True, strip_accents=False)
     output = bert_word_piece_tokenizer.encode(text)
     tokens = output.tokens
     indexed_tokens = output.ids
